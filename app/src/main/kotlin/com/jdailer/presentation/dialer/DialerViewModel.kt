@@ -6,7 +6,6 @@ import com.jdailer.feature.dialer.domain.model.DialerSuggestion
 import com.jdailer.feature.dialer.domain.usecase.ObserveDialSuggestionsUseCase
 import com.jdailer.feature.voip.domain.model.CallRouteResult
 import com.jdailer.feature.voip.domain.usecase.PlaceTelecomCallUseCase
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,8 +14,6 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.distinctUntilChanged
-
-@OptIn(FlowPreview::class)
 class DialerViewModel(
     private val observeDialSuggestionsUseCase: ObserveDialSuggestionsUseCase,
     private val placeTelecomCallUseCase: PlaceTelecomCallUseCase

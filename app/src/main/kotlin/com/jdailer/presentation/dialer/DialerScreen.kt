@@ -13,10 +13,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Button
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -104,7 +104,7 @@ fun DialerScreen(
                 }
             }
 
-            Divider()
+            HorizontalDivider()
 
             LazyColumn(
                 modifier = Modifier
@@ -232,7 +232,7 @@ private fun DialerSuggestionRow(
                     Icon(Icons.Filled.Call, contentDescription = "Call")
                 }
                 IconButton(onClick = onMessage) {
-                    Icon(Icons.Filled.Send, contentDescription = "Message")
+                    Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Message")
                 }
                 Button(onClick = onPick) {
                     Text("Pick")

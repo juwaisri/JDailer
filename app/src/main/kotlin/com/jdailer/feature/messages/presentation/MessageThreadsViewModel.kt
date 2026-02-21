@@ -9,7 +9,6 @@ import com.jdailer.feature.messages.domain.model.UnifiedMessageThread
 import com.jdailer.feature.messages.domain.usecase.ObserveMessageThreadsUseCase
 import com.jdailer.feature.messages.domain.usecase.SyncMessagesWithPolicyUseCase
 import com.jdailer.feature.messages.domain.model.SmsMmsSyncResult
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -31,7 +30,6 @@ class MessageThreadsViewModel(
     private val _syncMessage = MutableStateFlow<SmsMmsSyncResult?>(null)
     val syncMessage = _syncMessage.asStateFlow()
 
-    @OptIn(FlowPreview::class)
     val threads: Flow<PagingData<UnifiedMessageThread>> = combine(_query, _sources) { query, sources ->
         Pair(query, sources)
     }.flatMapLatest { (query, sources) ->

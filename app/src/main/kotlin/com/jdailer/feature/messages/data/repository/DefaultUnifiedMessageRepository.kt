@@ -501,7 +501,6 @@ class DefaultUnifiedMessageRepository(
             while (it.moveToNext()) {
                 val data = it.safeString("_data")
                 val partId = it.safeString("_id")
-                val partType = it.safeString("ct")
                 val resolvedUri = when {
                     !data.isNullOrBlank() -> data
                     !partId.isNullOrBlank() -> Uri.parse("content://mms/part/$partId").toString()

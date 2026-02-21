@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
@@ -36,7 +36,7 @@ private enum class HubTab(
     val icon: ImageVector
 ) {
     Dialer("Dialer", Icons.Filled.Call),
-    History("History", Icons.Filled.List),
+    History("History", Icons.Filled.History),
     Contacts("Contacts", Icons.Filled.Person),
     Settings("Settings", Icons.Filled.Settings)
 }

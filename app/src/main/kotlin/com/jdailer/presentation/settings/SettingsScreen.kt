@@ -14,7 +14,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -140,7 +140,7 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
                 }
             }
 
-            Divider()
+            HorizontalDivider()
             Text(
                 "Privacy policy defaults",
                 style = MaterialTheme.typography.titleSmall,

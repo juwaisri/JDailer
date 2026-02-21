@@ -16,15 +16,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -153,7 +153,7 @@ fun ContactsScreen(
                 Text("Last synced: never", style = MaterialTheme.typography.bodySmall)
             }
 
-            Divider()
+            HorizontalDivider()
 
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
@@ -396,7 +396,7 @@ private fun ContactCardRow(
                         scope = scope
                     )
                 }) {
-                    Icon(Icons.Filled.Send, contentDescription = "Message")
+                    Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Message")
                 }
                 IconButton(onClick = {
                     scope.launch {
