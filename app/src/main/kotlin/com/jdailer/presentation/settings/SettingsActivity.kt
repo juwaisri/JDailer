@@ -1,13 +1,21 @@
 package com.jdailer.presentation.settings
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.jdailer.R
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_placeholder)
-        title = getString(R.string.settings)
+        setContent {
+            MaterialTheme {
+                Surface {
+                    SettingsScreen()
+                }
+            }
+        }
     }
 }
+

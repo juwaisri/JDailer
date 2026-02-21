@@ -27,10 +27,8 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
-    <style name="Theme.JDialer.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/primary</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_app_logo</item>
-        <item name="postSplashScreenTheme">@style/Theme.JDialer</item>
+    <style name="Theme.JDialer.Splash" parent="Theme.JDialer">
+        <item name="android:windowBackground">@color/primary</item>
     </style>
 
     <style name="Theme.JDialer.InCall" parent="Theme.JDialer">
