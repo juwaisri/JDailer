@@ -6,6 +6,7 @@ import com.jdailer.BuildConfig
 import com.jdailer.core.common.coroutines.DispatcherProvider
 import com.jdailer.core.database.AppDatabase
 import com.jdailer.core.privacy.RecordingPrivacyPolicyStore
+import com.jdailer.core.privacy.IntegrationPrivacyPolicyStore
 import com.jdailer.feature.call.recording.CallRecordingManager
 import com.jdailer.feature.call.recording.DefaultCallRecordingManager
 import com.jdailer.feature.call.recording.domain.usecase.StartRecordingWithPolicyUseCase
@@ -30,6 +31,8 @@ import com.jdailer.feature.history.domain.usecase.GetUnifiedHistoryUseCase
 import com.jdailer.feature.history.domain.repository.UnifiedHistoryRepository
 import com.jdailer.feature.integrations.base.CommunicationAdapterRegistry
 import com.jdailer.feature.integrations.base.CommunicationAppAdapter
+import com.jdailer.feature.integrations.base.DefaultIntegrationPolicyService
+import com.jdailer.feature.integrations.base.IntegrationPolicyService
 import com.jdailer.feature.integrations.base.PlatformIntentLauncher
 import com.jdailer.feature.integrations.email.EmailAdapter
 import com.jdailer.feature.integrations.email.EmailIntegrationService
@@ -101,6 +104,7 @@ import java.util.concurrent.TimeUnit
 val coreModule = module {
     single { DispatcherProvider() }
     single { RecordingPrivacyPolicyStore(get()) }
+    single { IntegrationPrivacyPolicyStore(get()) }
     single { Gson() }
     single {
         OkHttpClient.Builder()
@@ -202,7 +206,8 @@ val appModules = module {
     single { TelegramAdapter() } bind(CommunicationAppAdapter::class)
     single { SignalAdapter() } bind(CommunicationAppAdapter::class)
     single { EmailAdapter() } bind(CommunicationAppAdapter::class)
-    single { PlatformIntentLauncher(get()) }
+    single<IntegrationPolicyService> { DefaultIntegrationPolicyService(get()) }
+    single { PlatformIntentLauncher(get(), get()) }
     single { WhatsAppIntegrationService(get()) }
     single { TelegramIntegrationService(get()) }
     single { SignalIntegrationService(get()) }

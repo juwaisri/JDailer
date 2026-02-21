@@ -177,6 +177,7 @@ If you want a release build:
 ```bash
 ./gradlew assembleRelease
 ```
+Use `docs/PRODUCTION_RELEASE_CHECKLIST.md` for signing policy, release integrity verification, and Play Console upload steps.
 
 If `app-release-unsigned.apk` is required, check under:
 
@@ -190,6 +191,7 @@ app/build/outputs/apk/release/
 - Enforce runtime permissions and role-management checks in release variant QA.
 - Validate telephony and message permissions on target devices before public rollout.
 - Keep third-party integration intents documented and versioned.
+- Follow `docs/PRODUCTION_RELEASE_CHECKLIST.md` for release signing and publication readiness checks.
 
 ## Privacy and compliance notes
 

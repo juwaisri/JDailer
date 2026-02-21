@@ -6,6 +6,21 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
+import java.util.Properties
+
+val releaseKeystoreProperties = Properties().apply {
+    val file = rootProject.file("keystore.properties")
+    if (file.exists()) {
+        load(file.inputStream())
+    }
+}
+
+val hasReleaseKeystore = run {
+    listOf("storeFile", "storePassword", "keyAlias", "keyPassword").all { key ->
+        releaseKeystoreProperties[key]?.toString()?.isNotBlank() == true
+    }
+}
+
 android {
     namespace = "com.jdailer"
     compileSdk = 34
@@ -23,10 +38,24 @@ android {
         buildConfigField("String", "SPAM_API_URL", "\"https://api.example.com\"")
     }
 
+    if (hasReleaseKeystore) {
+        signingConfigs {
+            create("release") {
+                storeFile = file(releaseKeystoreProperties["storeFile"]!!.toString())
+                storePassword = releaseKeystoreProperties["storePassword"]!!.toString()
+                keyAlias = releaseKeystoreProperties["keyAlias"]!!.toString()
+                keyPassword = releaseKeystoreProperties["keyPassword"]!!.toString()
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
+            if (hasReleaseKeystore) {
+                signingConfig = signingConfigs.getByName("release")
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
